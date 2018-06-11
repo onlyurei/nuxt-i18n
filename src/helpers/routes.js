@@ -66,7 +66,9 @@ export const makeRoutes = (baseRoutes, {
         // Only add prefix on top level routes
         !isChild &&
         // Skip default locale if strategy is PREFIX_EXCEPT_DEFAULT
-        !(locale === defaultLocale && strategy === STRATEGIES.PREFIX_EXCEPT_DEFAULT)
+        !(locale === defaultLocale && strategy === STRATEGIES.PREFIX_EXCEPT_DEFAULT) &&
+        // No prefix if using no_prefix strategy
+        !(strategy === STRATEGIES.NO_PREFIX)
       )
       if (shouldAddPrefix) {
         path = `/${locale}${path}`
